@@ -5,7 +5,11 @@
   {mod, {monitoring_app, []}},
   {applications,
    [kernel,
-    stdlib
+    stdlib,
+    cowboy,
+    prometheus_cowboy,
+    opencensus_cowboy,
+    eper
    ]},
   {env,[]},
   {modules, []},
