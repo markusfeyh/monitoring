@@ -3,9 +3,7 @@
     io_lib:format("~s:~s/~p",
       [?MODULE_STRING, ?FUNCTION_NAME, ?FUNCTION_ARITY]))).
 
--define(START_SPAN,
-  _ = ocp:with_child_span(?MFA_SPAN_NAME)
-).
+-define(START_SPAN, _ = ocp:with_child_span(?MFA_SPAN_NAME)).
 
 -define(START_SPAN(Attrs),
   _ = ocp:with_child_span(?MFA_SPAN_NAME, Attrs)
@@ -15,9 +13,7 @@
   _ = ocp:with_child_span(SpanName, Attrs)
 ).
 
--define(FINISH_SPAN,
-  ocp:finish_span()
-).
+-define(FINISH_SPAN, ocp:finish_span()).
 
 
 -define(INLINE_SPAN(SpanName, Attrs),
