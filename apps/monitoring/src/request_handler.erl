@@ -1,4 +1,5 @@
--module(metrics_handler).
+-module(request_handler).
+-include("span.hrl").
 
 -export([init/2]).
 -export([content_types_provided/2]).
@@ -13,5 +14,10 @@ content_types_provided(Req, State) ->
   ], Req, State}.
 
 get_text(Req, State) ->
-  Body = prometheus_text_format:format(),
-  {Body, Req, State}.
+  ?START_SPAN,
+  external_api:check_auth(),
+  db:get_user(),
+  external_api:make_request(),
+  db:update_user(),
+  ?FINISH_SPAN,
+  {"body response", Req, State}.

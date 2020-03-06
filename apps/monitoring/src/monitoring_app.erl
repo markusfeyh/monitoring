@@ -18,7 +18,9 @@ start(_Type, _Args) ->
     prometheus_cowboy2_instrumenter:setup(),
     Dispatch = cowboy_router:compile([
         {'_', [
-            {"/metrics/[:registry]", prometheus_cowboy2_handler, []}
+            {"/metrics/[:registry]", prometheus_cowboy2_handler, []},
+            {"/request", request_handler, []},
+            {"/service", service_handler, []}
         ]}
     ]),
     {ok, _} = cowboy:start_clear(http, [{port, 4445}],

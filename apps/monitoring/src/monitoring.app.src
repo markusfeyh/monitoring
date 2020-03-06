@@ -9,6 +9,7 @@
     cowboy,
     prometheus_cowboy,
     opencensus_cowboy,
+    opencensus_zipkin,
     eper
    ]},
   {env,[]},
