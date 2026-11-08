@@ -6,12 +6,14 @@
   {applications,
    [kernel,
     stdlib,
+    inets,
     cowboy,
+    cowboy_telemetry,
+    prometheus,
     prometheus_cowboy,
-    opencensus_cowboy,
-    opencensus_zipkin,
-    ibrowse,
-    eper
+    opentelemetry_api,
+    opentelemetry_cowboy,
+    opentelemetry_process_propagator
    ]},
   {env,[]},
   {modules, []},
