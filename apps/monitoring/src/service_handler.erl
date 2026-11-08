@@ -14,9 +14,9 @@ content_types_provided(Req, State) ->
   ], Req, State}.
 
 get_text(Req, State) ->
-  ?START_SPAN,
-  external_api:check_auth(),
-  db:get_user(),
-  db:update_user(),
-  ?FINISH_SPAN,
+  ?WITH_SPAN(begin
+    external_api:check_auth(),
+    db:get_user(),
+    db:update_user()
+  end),
   {"body response", Req, State}.
